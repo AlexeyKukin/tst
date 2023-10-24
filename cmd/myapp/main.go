@@ -5,14 +5,25 @@ import (
 	"fmt"
 )
 
-func main() {
+var (
+	t    *int
+	f, r *string
+)
+
+func init() {
 	fmt.Println(`Alexey Kukin by Golang 2023
 Этот исполняемый файл собирает данные с HW серверов указанных в списке. 
 Так же можно запустить сканирование с ключем -s`)
 
-	flag.Int("t", 10, "Scan timeout")
-	flag.String("f", "", "Scan list filename")
+	t = flag.Int("t", 10, "Scan timeout")
+	f = flag.String("f", "", "Scan list filename")
+	r = flag.String("r", "", "Scan range in StartIP-StopIP format")
+	fmt.Println(flag.Args())
 	flag.Parse()
+}
 
-	fmt.Println(flag.Parsed())
+func main() {
+
+	fmt.Println(*t, *f, *r)
+
 }
